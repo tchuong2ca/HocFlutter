@@ -5,7 +5,8 @@ import 'package:viduseabank/firstindex.dart';
 import 'package:viduseabank/fourthindex.dart';
 import 'package:viduseabank/secondindex.dart';
 import 'package:viduseabank/thirdindex.dart';
-import 'package:viduseabank/model/features.dart';
+
+import 'more.dart';
 class Home extends StatefulWidget {
 
   @override
@@ -21,22 +22,16 @@ class _HomeState extends State<Home> {
   final List<Widget> _widgetOptions = <Widget>[
     firstindex(),
 
-   secondindex(),
+   const secondindex(),
     const thirdindex(),
-    const fourthindex(),
-    const Text(
-      'Index 4: School',
-      style: optionStyle,
-    ),
+    fourthindex(0),
+   more()
   ];
-
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,20 +55,20 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.menu),
+            label: 'Danh mục',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.wysiwyg),
+            label: 'Kết quả',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.support_agent),
+            label: 'Hỗ trợ bán',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(CupertinoIcons.question_square),
+            label: 'Q&A',
           ),
         ],
         currentIndex: _selectedIndex,

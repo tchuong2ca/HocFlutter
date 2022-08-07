@@ -9,7 +9,6 @@ class secondindex extends StatefulWidget {
 }
 
 class _secondindexState extends State<secondindex> {
-  bool _customTileExpanded = false;
   final List<Index2> index2=[
     Index2("Thông báo"),
     Index2("Thi đua"),
@@ -19,6 +18,11 @@ class _secondindexState extends State<secondindex> {
     Index2("Thông báo"),
     Index2("Thông báo"),
   ];
+  final europeanCountries = ['Albania', 'Andorra', 'Armenia', 'Austria',
+    'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
+    'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
+    'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland',
+    'Italy', 'Kazakhstan', 'Kosovo', 'Latvia', 'Liechtenstein'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,42 +31,16 @@ class _secondindexState extends State<secondindex> {
           toolbarHeight: 40,
           centerTitle: true,
           title: Text("Kết quả bán"),
-
-
         ),
-    body:Column(
-    children: <Widget>[
-    const ExpansionTile(
-    title: Text('ExpansionTile 1'),
-    subtitle: Text('Trailing expansion arrow icon'),
-    children: <Widget>[
-    ListTile(title: Text('This is tile number 1')),
-    ],
-    ),
-    ExpansionTile(
-    title: const Text('ExpansionTile 2'),
-    subtitle: const Text('Custom expansion arrow icon'),
-    trailing: Icon(
-    _customTileExpanded
-    ? Icons.arrow_drop_down_circle
-        : Icons.arrow_drop_down,
-    ),
-    children: const <Widget>[
-    ListTile(title: Text('This is tile number 2')),
-    ],
-    onExpansionChanged: (bool expanded) {
-    setState(() => _customTileExpanded = expanded);
-    },
-    ),
-    const ExpansionTile(
-    title: Text('ExpansionTile 3'),
-    subtitle: Text('Leading expansion arrow icon'),
-    controlAffinity: ListTileControlAffinity.leading,
-    children: <Widget>[
-    ListTile(title: Text('This is tile number 3')),
-    ],
-    ),
-    ],
-    ));
+     body: ListView.builder(itemCount: europeanCountries.length,itemBuilder: (context, index) {
+       return ExpansionTile(title: Text(europeanCountries[index]),
+       subtitle: const Text('Trailing expansion arrow icon'),
+       children:
+       const [
+       ListTile(title: Text('This is tile number 1')),
+       ],);
+     }),
+
+    );
   }
 }

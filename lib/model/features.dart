@@ -5,6 +5,5 @@ class Features {
 }
 class Index2{
   final String title;
-
   Index2(this.title);
 }
